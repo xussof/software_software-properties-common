@@ -1,22 +1,28 @@
 ---
-- name: Installing software-properties-common packages using apt
-  become: true
-  apt:
-    pkg: "software-properties-common"
-    update_cache: yes
-    state: latest
-  when: ansible_distribution == 'Ubuntu'
+#- name: Installing software-properties-common packages using apt
+#  become: true
+#  apt:
+#    pkg: "software-properties-common"
+#    update_cache: yes
+#    state: latest
+#  when: ansible_distribution == 'Ubuntu'
 
-- name: Installing software-properties-common packages using yum
-  become: true
-  yum:
-    pkg: "software-properties-common"
-    update_cache: yes
-    state: latest
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+#- name: Installing software-properties-common packages using yum
+#  become: true
+#  yum:
+#    pkg: "software-properties-common"
+#    update_cache: yes
+#    state: latest
+#  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
-- name: Installing software-properties-common packages using pacman
-  pacman:
+#- name: Installing software-properties-common packages using pacman
+#  pacman:
+#    name: "software-properties-common"
+#    state: present
+#  when: ansible_distribution == 'MacOSX'
+
+- name: Installing software-properties-common packages
+  become: true
+  package:
     name: "software-properties-common"
     state: present
-  when: ansible_distribution == 'MacOSX'
