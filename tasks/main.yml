@@ -15,6 +15,7 @@
 #    state: latest
 #  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
+
 #- name: Installing software-properties-common packages using pacman
 #  pacman:
 #    name: "software-properties-common"
