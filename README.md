@@ -1,37 +1,69 @@
-software_software-properties-common
+# software_software-properties-common
 =========
 
-This role will install software_software-properties-common software
+This role will install software-properties-common software
 
-Requirements
+## Requirements
 ------------
 
-All dependencies will appear on requirements.yml file
+All requirements will appear on requirements-software.yml file
 
-Role Variables
+## Role Variables
 --------------
 
 Not defined yet. But in the future we could stage software version in here
 
-Dependencies
+## Dependencies
 ------------
 
-All dependencies will appear on requirements.yml file
+All dependencies will appear on requirements-software.yml file
 
-Example Playbook
+## Example requirements
+--------------------
+
+    requirements-software.yml
+
+    ---
+    - src: git@github.com:xussof/software_software-properties-common
+      scm: git
+      version: master
+      name: software_software-properties-common
+
+## Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+    test-software.yml
 
-    - hosts: servers
-      roles:
-         - { role: xussof.software_software-properties-common }
+    ---
+    - hosts: localhost
+      pre_tasks:
+        - raw: ansible-galaxy install -f -r requirements-software.yml
+      vars_files:
+        - "encrypted.yml"
+      tasks:
+        - name: Including role to test
+          include_role:
+            name: software_software-properties-common
 
-License
+## Example encrypted
+-----------------
+
+    encrypted.yml
+
+    ---
+    example_sudo_pass: yourpass
+
+## Example calling playbook
+------------------------
+
+    ansible-playbook test-software.yml --extra-vars "ansible_become_pass=example_sudo_pass"
+
+
+## License
 -------
 
 BSD
 
-Author Information
+## Author Information
 ------------------
 Made by @xussof
